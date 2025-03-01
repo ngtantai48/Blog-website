@@ -1,0 +1,11 @@
+<!-- Header part -->
+{% include './header.html' %}
+
+<!-- Main content part -->
+{% block content %}
+
+{% load django_browser_reload %} {% django_browser_reload_script %}
+{% endblock %}
+
+<!-- Footer -->
+{% include './footer.html' %}
