@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blogs, Category
 
@@ -20,3 +21,8 @@ def posts_by_category(request, category_id):
         "category": category
     }
     return render(request, "posts_by_category.html", context)
+
+
+# blogs
+def blogs(request, slug):
+    return render(request, 'blogs.html')
