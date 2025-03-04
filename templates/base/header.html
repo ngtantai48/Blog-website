@@ -36,7 +36,7 @@
                     <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a> &nbsp;
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'register' %}">Register</a>
                     {% else %}
-                    <span>Your are logged in as {{ user }}</span> &nbsp;
+                    <span><a href="{% url 'dashboard' %}" class="btn btn-info">Dashboard</a></span> &nbsp;
                     <span><a href="{% url 'logout' %}">Logout</a></span>
                     {% endif %}
                 </div>
