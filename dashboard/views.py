@@ -1,6 +1,6 @@
-from django.shortcuts import redirect, render
-from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from blogs.models import Category, Blogs
 from dashboard.forms import CategoryForm
 
@@ -37,3 +37,21 @@ def add_categories(request):
         "form": form
     }
     return render(request, "dashboard/add_categories.html", context)
+
+
+def edit_categories(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    if request.method=="POST":
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Category modified successfully!")
+            return redirect('categories')
+        else:
+            messages.error(request, "Failed to edit category. Please check the form.")
+    form = CategoryForm(instance=category)
+    context = {
+        'form': form,
+        'category': category
+    }
+    return render(request, "dashboard/edit_categories.html", context)
