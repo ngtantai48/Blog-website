@@ -8,7 +8,8 @@
             class="nav-link text-dark {% if '/categories/' in request.path %} bg-warning {% endif %}">
             Categories
         </a>
-        <a href="">
+        <a href="{% url 'posts' %}"
+            class="nav-link text-dark {% if '/posts/' in request.path %} bg-warning {% endif %}">
             Posts
         </a>
         <a href="">Logout</a>
