@@ -9,9 +9,9 @@
     {% load crispy_forms_tags %}
     <!-- right sidebar -->
     <div class="col-md-9">
-        <h3>Add Category</h3>
+        <h3>Add New Post</h3>
 
-        <form action="" method="POST" style="width: 350px;">
+        <form action="" method="POST" style="width: 350px;" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form | crispy }}
 

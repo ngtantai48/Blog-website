@@ -14,7 +14,10 @@ class Category(models.Model):
         return self.category_name
 
 
-STATUS_CHOICES = (("draft", "Draft"), ("published", "Published"))
+STATUS_CHOICES = (
+    ("draft", "Draft"), 
+    ("published", "Published")
+)
 
 
 class Blogs(models.Model):
