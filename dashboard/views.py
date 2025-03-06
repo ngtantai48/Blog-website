@@ -94,3 +94,30 @@ def add_posts(request):
         "form": form
     }
     return render(request, "dashboard/add_posts.html", context)
+
+
+def edit_posts(request, pk):
+    post = get_object_or_404(Blogs, pk=pk)
+    if request.method == "POST":
+        form = BlogForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.slug = slugify(form.cleaned_data["title"])
+            post.save()
+            messages.success(request, "Post updated successfully!")
+            return redirect("posts")
+        else:
+            messages.error(request, "Failed to update post. Please check the form.")
+
+    form = BlogForm(instance=post)
+    context = {
+        "form": form,
+        "post": post
+    }
+    return render(request, "dashboard/edit_posts.html", context)
+
+
+def delete_posts(request, pk):
+    post = get_object_or_404(Blogs, pk=pk)
+    post.delete()
+    return redirect("posts")

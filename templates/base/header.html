@@ -44,6 +44,7 @@
             </div>
         </header>
 
+        {% if "dashboard" not in request.path %}
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
                 {% for cat in categories %}
@@ -51,3 +52,4 @@
                 {% endfor %}
             </nav>
         </div>
+        {% endif %}

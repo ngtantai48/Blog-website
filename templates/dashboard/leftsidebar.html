@@ -12,6 +12,9 @@
             class="nav-link text-dark {% if '/posts/' in request.path %} bg-warning {% endif %}">
             Posts
         </a>
-        <a href="">Logout</a>
+        <a href="{% url 'logout' %}"
+            class="nav-link text-dark">
+            Logout
+        </a>
     </div>
 </div>

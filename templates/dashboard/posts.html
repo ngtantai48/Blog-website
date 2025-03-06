@@ -30,7 +30,13 @@
                     <td>{{ post.category }}</td>
                     <td>{{ post.author }}</td>
                     <td>{{ post.status }}</td>
-                    <td>{{ post.is_feacherd }}</td>
+                    <td>
+                        {% if post.is_feacherd %}
+                        <i class="fas fa-check text-success"></i>
+                        {% else %}
+                        <i class="fas fa-times text-danger"></i>
+                        {% endif %}
+                    </td>
                     <td>
                         <a href="{% url 'edit_posts' post.id %}"><i class="fas fa-edit text-success"></i></a>
                         &nbsp;&nbsp;
