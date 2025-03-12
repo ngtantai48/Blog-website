@@ -88,6 +88,8 @@ def add_posts(request):
             messages.success(request, "Post created successfully!")
             return redirect("posts")
         else:
+            error_messages = "\n".join([f"{field}: {', '.join(errors)}" for field, errors in form.errors.items()])
+            print('Errors: ', error_messages)
             messages.error(request, "Failed to create post. Please check the form.")
 
     form = BlogForm()
