@@ -163,3 +163,9 @@ def edit_users(request, pk):
     }
     return render(request, 'dashboard/edit_users.html', context)
 
+
+def delete_users(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    user.delete()
+    return redirect("users")
+

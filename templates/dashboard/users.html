@@ -46,7 +46,7 @@
                     <td>
                         <a href="{% url 'edit_users' user.id %}"><i class="fas fa-edit text-success"></i></a>
                         &nbsp;&nbsp;
-                        <a href="#"><i class="fas fa-trash text-danger"></i></a>
+                        <a href="{% url 'delete_users' user.id %}"><i class="fas fa-trash text-danger"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
