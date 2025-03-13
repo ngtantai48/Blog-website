@@ -40,8 +40,17 @@
                         </div>
                         {% endfor %}
                     {% else %}
-                        no Comments Yet
+                        No comments yet
                     {% endif %}
+                    <div class="form-group">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea name="comment" class="form-control" placeholder="Write your Comment"></textarea>
+                                <input type="submit" class="btn btn-primary mt-2">
+                            </div>
+                        </form>
+                    </div>
                 </section>
             </article>
         </div>
