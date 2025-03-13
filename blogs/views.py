@@ -45,16 +45,26 @@ def blogs(request, slug):
     return render(request, "blogs.html", context)
 
 
-# search dunctionality
+# search functionality
 def search(request):
-    keyword = request.GET.get('keyword')
-    blogs = Blogs.objects.filter(Q(title__icontains=keyword) 
-                                | Q(short_description__icontains=keyword) 
-                                | Q(blog_body__icontains=keyword),
-                                status='published'
-    )
-    content={
-        'blogs': blogs,
-        'keyword': keyword
-    }
-    return render(request, 'search.html', content)
+    try:
+        keyword = request.GET.get('keyword', '')
+        if keyword:
+            blogs = Blogs.objects.filter(
+                Q(title__icontains=keyword) |
+                Q(short_description__icontains=keyword) |
+                Q(blog_body__icontains=keyword),
+                status='published'
+            )
+        else:
+            blogs = Blogs.objects.filter(status='published')
+
+        context = {
+            'blogs': blogs,
+            'keyword': keyword
+        }
+        return render(request, 'search.html', context)
+    
+    except Exception as e:
+        print(f"Error occurred in search function: {e}")
+        return render(request, 'search.html', {'error': str(e)})
