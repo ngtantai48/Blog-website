@@ -3,14 +3,13 @@ from django.urls import path, include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
-from blogs import views as BlogsView
+
 
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
-    path("category/", include("blogs.urls")),
-    path("blogs/", include("blogs.urls")),
+    path("", include("blogs.urls")),
     path("register/", views.register, name="register"),
     path("login/", views.login, name='login'),
     path("logout/", views.logout, name='logout'),

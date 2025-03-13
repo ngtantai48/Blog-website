@@ -21,7 +21,7 @@
                 <figure class="mb-4"><img class="img-fluid rounded" src="{{ single_post.blog_image.url }}" alt="..." />
                 </figure>
                 <!-- Post content-->
-                <section class="mb-5">
+                <section class="text-justify mb-5">
                     <p class="fs-5 mb-4">{{ single_post.short_description }}</p>
                     <p class="fs-5 mb-4">{{ single_post.blog_body }}</p>
 
@@ -65,18 +65,11 @@
                 <h4 class="font-italic">Categories</h4>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <ul class="list-unstyled mb-0">
                                 {% for cat in categories %}
                                 <li><a href="{% url 'posts_by_category' cat.id %}">{{ cat.category_name }}</a></li>
                                 {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,10 +77,10 @@
             </div>
             <!-- Side widget-->
             <div class="card mb-4 p-3">
-                <h4 class="font-italic">Follow Us</h4>
+                <h4 class="font-italic">Follow me</h4>
                 <ol class="list-unstyled">
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">LinkedIn</a></li>
+                    <li><a target="_blank" href="https://github.com/ngtantai48">GitHub</a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/ngtantai48/">LinkedIn</a></li>
                 </ol>
             </div>
         </div>
