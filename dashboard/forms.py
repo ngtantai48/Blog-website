@@ -1,7 +1,6 @@
 from django import forms
-from blogs.models import Category, Blogs
+from blogs.models import Category, Blogs, User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 
 
 class CategoryForm(forms.ModelForm):

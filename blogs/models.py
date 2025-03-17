@@ -1,7 +1,8 @@
 import uuid
+from django.conf import settings
 from django.db import models
 from django.db.models import Manager
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class TimeStampedModel(models.Model):
@@ -12,6 +13,10 @@ class TimeStampedModel(models.Model):
     
     class Meta:
         abstract = True
+
+
+class User(AbstractUser):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
 
 
 class Category(TimeStampedModel):
@@ -34,7 +39,7 @@ class Blogs(TimeStampedModel):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     blog_image = models.ImageField(upload_to="uploads/%y/%m/%d")
     short_description = models.TextField(max_length=2000)
     blog_body = models.TextField(max_length=3000)
@@ -55,4 +60,3 @@ class Comment(TimeStampedModel):
     
     def __str__(self):
         return self.comment
-    

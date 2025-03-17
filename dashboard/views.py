@@ -1,9 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.template.defaultfilters import slugify
-from django.contrib.auth.models import User
 from django.contrib import messages
-from blogs.models import Category, Blogs
+from blogs.models import Category, Blogs, User
 from dashboard.forms import CategoryForm, BlogForm, AddUserForm, EditUserForm
 
 
